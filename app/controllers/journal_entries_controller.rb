@@ -10,7 +10,7 @@ class JournalEntriesController < ApplicationController
   def create
     @journal_entry = JournalEntry.new(journal_params)
     if @journal_entry.save
-      redirect_to journal_entries_path
+      redirect_to journal_entries_path, notice: 'This post is legit'
     else
     binding.pry
       render :new

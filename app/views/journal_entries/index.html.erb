@@ -1,2 +1,6 @@
 <h1> All Entries </h1>
-<%= link_to 'new post', new_journal_entry_path %>
+<% @journal_entries.each do |journal| %>
+  <%= journal.title %><br>
+  <%= journal.description %> <br>
+<% end %>
+<%= link_to 'New Post', new_journal_entry_path %>
