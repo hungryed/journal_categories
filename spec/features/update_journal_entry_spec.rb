@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature 'user view existing post' do
+  after(:all) { JournalEntry.destroy_all }
 
   scenario 'user can click on existing journal entry' do
     entry = FactoryGirl.create(:journal_entry)
@@ -13,8 +14,10 @@ feature 'user view existing post' do
   scenario 'user can delete existing journal entry' do
     entry = FactoryGirl.create(:journal_entry)
     visit journal_entries_path
-    click_on 'Destroy'
+    save_and_open_page
+    click_link  "journal-#{entry.id}-destroy"
     expect(page).to_not have_content entry.title
+    expect(page).to have_content 'Fuck you journal entry'
   end
 
   scenario 'user can update current attributes of journal' do

@@ -30,6 +30,12 @@ class JournalEntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @journal_entry = JournalEntry.find(params[:id])
+    @journal_entry.destroy
+    redirect_to journal_entries_path, notice: 'Fuck you journal entry'
+  end
+
   private
   def journal_params
     params.require(:journal_entry).permit(:title, :description, category_ids: [])
