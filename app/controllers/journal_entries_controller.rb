@@ -5,6 +5,7 @@ class JournalEntriesController < ApplicationController
 
   def new
     @journal_entry = JournalEntry.new
+    @categories = Category.all
   end
 
   def create
@@ -18,6 +19,6 @@ class JournalEntriesController < ApplicationController
 
   private
   def journal_params
-    params.require(:journal_entry).permit(:title, :description)
+    params.require(:journal_entry).permit(:title, :description, category_ids: [])
   end
 end

@@ -10,5 +10,11 @@
 
   <%= f.label :description %>
   <%= f.text_area :description %><br>
+
+  <% @categories.each do |category| %>
+    <%= check_box_tag("journal_entry[category_ids][]", category.id, @journal_entry.categories.include?(category))%>
+    <%= category.name %>
+  <% end %>
+
   <%= f.submit 'Submit' %>
 <% end %>
