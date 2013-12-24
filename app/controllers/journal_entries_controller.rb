@@ -12,7 +12,6 @@ class JournalEntriesController < ApplicationController
     if @journal_entry.save
       redirect_to journal_entries_path, notice: 'This post is legit'
     else
-    binding.pry
       render :new
     end
   end

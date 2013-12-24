@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :journal_entry do
-    title 'My Post'
-    description 'Good stuff here'
+    sequence(:title) {|n| "My #{n} Post"}
+    sequence(:description) {|n| "Good #{n} stuff here"}
   end
 end

@@ -4,8 +4,6 @@ class JournalCategory < ActiveRecord::Base
 
   validates_presence_of :category
   validates_presence_of :journal_entry
-  validates_uniqueness_of :journal_entry_id, 
+  validates_uniqueness_of :journal_entry_id,
     scope: :category_id
-
-
 end
