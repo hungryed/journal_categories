@@ -23,6 +23,13 @@ feature 'user creates journal entry' do
     expect(page).to have_content description
   end
 
+  scenario 'user sees creation date upon entry' do
+    entry = FactoryGirl.create(:journal_entry)
+    visit journal_entries_path
+    expect(page).to have_content entry.created_at
+    entry.destroy
+  end
+
   scenario 'user receives error for invalid input' do
     visit new_journal_entry_path
     click_on 'Submit'

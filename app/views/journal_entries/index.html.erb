@@ -2,6 +2,7 @@
 <% @journal_entries.each do |journal| %>
   <%= link_to journal.title, journal_entry_path(journal) %><br>
   <%= journal.description %> <br>
+  <%= journal.created_at %> <br>
   <%= link_to 'Destroy', journal, method: :delete, id: "journal-#{journal.id}-destroy" %><br>
   <br>
 <% end %>
