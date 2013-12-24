@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'user creates journal entry' do
   let(:title) { 'Words of some kind' }
   let(:description) { 'Most amazing Description'}
+  after(:all) { Category.destroy_all}
 
   scenario 'user sees input confirmation' do
     visit journal_entries_path
@@ -30,9 +31,8 @@ feature 'user creates journal entry' do
   end
 
   scenario 'user can select a category' do
-    category = FactoryGirl.build(:category, name: 'This category')
+    category = FactoryGirl.create(:category, name: 'This category')
     visit new_journal_entry_path
     expect(page).to have_content category.name
-    Category.destroy_all
   end
 end

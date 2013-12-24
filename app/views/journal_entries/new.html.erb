@@ -4,17 +4,4 @@
   <% end %>
 <% end %>
 
-<%= form_for(@journal_entry) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
-
-  <%= f.label :description %>
-  <%= f.text_area :description %><br>
-
-  <% @categories.each do |category| %>
-    <%= check_box_tag("journal_entry[category_ids][]", category.id, @journal_entry.categories.include?(category))%>
-    <%= category.name %>
-  <% end %>
-
-  <%= f.submit 'Submit' %>
-<% end %>
+<%= render 'journal_form' %>
