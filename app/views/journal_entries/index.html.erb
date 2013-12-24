@@ -2,5 +2,6 @@
 <% @journal_entries.each do |journal| %>
   <%= journal.title %><br>
   <%= journal.description %> <br>
+  <br>
 <% end %>
 <%= link_to 'New Post', new_journal_entry_path %>

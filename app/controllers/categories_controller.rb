@@ -11,6 +11,8 @@ class CategoriesController < ApplicationController
     @new_category = Category.new(category_params)
     if @new_category.save
       redirect_to categories_path, notice: 'Category Added Successfully'
+    else
+      redirect_to new_category_path, notice: 'That category already exists'
     end
   end
 
