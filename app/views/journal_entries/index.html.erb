@@ -1,4 +1,5 @@
 <h1> All Entries </h1>
+<ul>
 <% @journal_entries.each do |journal| %>
   <%= link_to journal.title, journal_entry_path(journal) %><br>
   <%= journal.description %> <br>
@@ -6,4 +7,5 @@
   <%= link_to 'Destroy', journal, method: :delete, id: "journal-#{journal.id}-destroy" %><br>
   <br>
 <% end %>
+</ul>
 <%= link_to 'New Post', new_journal_entry_path %>

@@ -4,6 +4,7 @@ feature 'user creates journal entry' do
   let(:title) { 'Words of some kind' }
   let(:description) { 'Most amazing Description'}
   after(:all) { Category.destroy_all}
+  after(:all) { JournalEntry.destroy_all}
 
   scenario 'user sees input confirmation' do
     visit journal_entries_path
@@ -41,5 +42,17 @@ feature 'user creates journal entry' do
     category = FactoryGirl.create(:category, name: 'This category')
     visit new_journal_entry_path
     expect(page).to have_content category.name
+  end
+
+  scenario 'entries are ordered by date created_at' do
+    entries = FactoryGirl.create_list(:journal_entry, 5)
+    counter = 100
+    entries.each do |entry|
+      entry.created_at -= counter
+      entry.updated_at -= counter - 30
+      counter += 100
+      entry.save
+    end
+    binding.pry
   end
 end

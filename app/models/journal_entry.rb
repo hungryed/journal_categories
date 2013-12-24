@@ -7,6 +7,9 @@ class JournalEntry < ActiveRecord::Base
     through: :journal_categories,
     inverse_of: :journal_entries
 
+  def self.created_order
+    order(created_at: :desc)
+  end
   # validate :approve_title
   # validate :approve_description
 
