@@ -14,8 +14,7 @@ feature 'user view existing post' do
   scenario 'user can delete existing journal entry' do
     entry = FactoryGirl.create(:journal_entry)
     visit journal_entries_path
-    save_and_open_page
-    click_link  "journal-#{entry.id}-destroy"
+    click_link "journal-#{entry.id}-destroy"
     expect(page).to_not have_content entry.title
     expect(page).to have_content 'Fuck you journal entry'
   end

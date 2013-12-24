@@ -30,7 +30,7 @@ feature 'User Creates New Category' do
   scenario 'User deletes existing category' do
     category = FactoryGirl.create(:category)
     visit categories_path
-    click_on 'Delete'
+    click_link "category-#{category.id}-destroy"
     expect(page).to have_content 'Total Annihilation'
     expect(page).to_not have_content category.name
   end

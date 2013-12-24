@@ -3,7 +3,7 @@
 <div>
 <% @categories.each do |category| %>
   <%= category.name %>
-  <%= link_to 'Delete', category, method: :delete %>
+  <%= link_to 'Delete', category, method: :delete, id: "category-#{category.id}-destroy" %>
   <br>
 <% end %>
 </div>
