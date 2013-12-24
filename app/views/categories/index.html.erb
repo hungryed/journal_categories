@@ -1,5 +1,9 @@
 <%= link_to 'Add Category', new_category_path %>
 
+<div>
 <% @categories.each do |category| %>
   <%= category.name %>
+  <%= link_to 'Delete', category, method: :delete %>
+  <br>
 <% end %>
+</div>

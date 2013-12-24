@@ -1,6 +1,6 @@
 <h1> All Entries </h1>
 <% @journal_entries.each do |journal| %>
-  <%= journal.title %><br>
+  <%= link_to journal.title, journal_entry_path(journal) %><br>
   <%= journal.description %> <br>
   <br>
 <% end %>

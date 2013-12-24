@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User Creates New Category' do
-  after(:all) { Category.destory_all }
+  after(:all) { Category.destroy_all }
   scenario 'User creates new category listing' do
     visit categories_path
     click_on 'Add Category'
@@ -31,6 +31,7 @@ feature 'User Creates New Category' do
     category = FactoryGirl.create(:category)
     visit categories_path
     click_on 'Delete'
+    expect(page).to have_content 'Total Annihilation'
     expect(page).to_not have_content category.name
   end
 
