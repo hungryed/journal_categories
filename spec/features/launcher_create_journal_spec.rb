@@ -45,14 +45,19 @@ feature 'user creates journal entry' do
   end
 
   scenario 'entries are ordered by date created_at' do
-    entries = FactoryGirl.create_list(:journal_entry, 5)
-    counter = 100
-    entries.each do |entry|
-      entry.created_at -= counter
-      entry.updated_at -= counter - 30
-      counter += 100
-      entry.save
-    end
-    binding.pry
+    first_journal = FactoryGirl.create(:journal_entry,
+      created_at: "2013-12-20 16:21:11",
+      updated_at: "2013-12-31 19:21:11")
+    middle_journal = FactoryGirl.create(:journal_entry,
+      created_at: "2013-12-24 16:21:11",
+      updated_at: "2013-12-31 16:21:11")
+    last_journal = FactoryGirl.create(:journal_entry,
+      created_at: "2013-12-29 16:21:11",
+      updated_at: "2013-12-30 16:21:11")
+    visit journal_entries_path
+    last_journal.title.should appear_before(first_journal.title)
+    last_journal.title.should appear_before(middle_journal.title)
+    middle_journal.title.should appear_before(first_journal.title)
+    first_journal.title.should_not appear_before(last_journal.title)
   end
 end

@@ -36,6 +36,7 @@ group :test, :development do
   gem 'valid_attribute'
   gem 'capybara'
   gem 'launchy'
+  gem 'orderly'
 end
 
 group :doc do
